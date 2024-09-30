@@ -42,7 +42,7 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
         resource-group: git-rg
-        cluster-name: $AKS_CLUSTER_NAME
+        cluster-name: gitAKSCluster
 
     - name: Deploy to AKS
       uses: azure/k8s-deploy@v1
