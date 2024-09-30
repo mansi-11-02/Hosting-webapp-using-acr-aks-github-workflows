@@ -41,7 +41,7 @@ jobs:
       uses: azure/aks-set-context@v1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
-        resource-group: $RESOURCE_GROUP
+        resource-group: git-rg
         cluster-name: $AKS_CLUSTER_NAME
 
     - name: Deploy to AKS
