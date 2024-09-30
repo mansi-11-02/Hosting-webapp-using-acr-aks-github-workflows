@@ -1,26 +1,37 @@
-Jenkins download commands
+Run the following commands in vm:
+Install aws cli
+Create resource group
 ```yml
-dnf install java-17-amazon-corretto -y
-wget -O /etc/yum.repos.d/jenkins.repo \https://pkg.jenkins.io/redhat-stable/jenkins.repo
-rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-dnf install jenkins -y
-systemctl enable jenkins
-systemctl start jenkins
+curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
+az login
+az group create --name git-rg --location francecentral
 ```
 
+![image](https://github.com/user-attachments/assets/4233c3ae-8200-4359-8ce1-4eaace97f719)
 
-Tomcat download commands
+Create acr and aks cluster
 ```yml
-wget https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.93/bin/apache-tomcat-9.0.93.tar.gz
+az acr create --resource-group git-rg --name gitacr --sku Basic
+ssh-keygen
+az aks create --resource-group git-rg --name gitAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
 ```
+Add Secrets in github repository
 
-tomcat-users.xml
 ```yml
-<role rolename="manager-gui"/>
-<role rolename="manager-script"/>
-<role rolename="manager-jmx"/>
-<role rolename="manager-status"/>
-<user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
-<user username="developer" password="developer" roles="manager-script"/>
-<user username="tomcat" password="s3cret" roles="manager-gui"/>
+# Copy subscription id
+az account list --output table
+#paste it here
+az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/{subscription-id} --sdk-auth
 ```
+Add the json file in secrets by giving name as AZURE_CREDENTIALS
+
+Add deployment and service file in k8s folder
+Run the workflow file
+
+
+
+
+
+
+
+
