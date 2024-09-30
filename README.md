@@ -15,6 +15,8 @@ az acr create --resource-group git-rg --name gitacr --sku Basic
 ssh-keygen
 az aks create --resource-group git-rg --name gitAKSCluster --node-count 1 --enable-addons monitoring --generate-ssh-keys
 ```
+![image](https://github.com/user-attachments/assets/591dec27-0bc1-46a7-bee8-3fcd42f19e5a)
+
 Add Secrets in github repository
 
 ```yml
