@@ -52,3 +52,4 @@ jobs:
           k8s/service.yaml
         images: |
           $ACR_NAME.azurecr.io/$IMAGE_NAME:${{ github.sha }}
+        namespace: default
