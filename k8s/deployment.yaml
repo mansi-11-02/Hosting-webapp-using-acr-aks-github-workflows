@@ -1,24 +1,29 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mywebapp
+  name: my-app1
+  namespace: default
+  labels:
+    app: my-app1
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: mywebapp
+      app: my-app1
   template:
     metadata:
       labels:
-        app: mywebapp
+        app: my-app1
     spec:
       containers:
-      - name: mywebapp
+      - name: my-app1
         image: myACR.azurecr.io/mywebapp:latest
+        imagePullPolicy: Always
         ports:
-        - containerPort: 80
+        - containerPort: 8080
   strategy:
-  type: RollingUpdate
-  rollingUpdate:
-    maxSurge: 1
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
       maxUnavailable: 1
+
