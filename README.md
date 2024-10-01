@@ -25,6 +25,8 @@ az account list --output table
 #paste it here
 az ad sp create-for-rbac --name "myApp" --role contributor --scopes /subscriptions/{subscription-id} --sdk-auth
 ```
+![image](https://github.com/user-attachments/assets/3591bd50-73df-4e1e-8374-c22d17dc7569)
+
 Add the json file in secrets by giving name as AZURE_CREDENTIALS
 
 Add deployment and service file in k8s folder
