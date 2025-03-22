@@ -1,5 +1,5 @@
 Run the following commands in vm:
-Install aws cli
+Install azure cli
 Create resource group
 ```yml
 curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash
